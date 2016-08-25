@@ -1,5 +1,6 @@
 [{
     "title": "Dawn of the Planet of the Apes",
+    "location" : "Linz",
     "image": "http://api.androidhive.info/json/movies/1.jpg",
     "rating": 8.3,
     "releaseYear": 2014,
@@ -7,6 +8,7 @@
 },
 {
     "title": "District 9",
+    "location" : "Linz",
     "image": "http://api.androidhive.info/json/movies/2.jpg",
     "rating": 8,
     "releaseYear": 2009,
@@ -14,6 +16,7 @@
 },
 {
     "title": "Transformers: Age of Extinction",
+    "location" : "Linz",
     "image": "http://api.androidhive.info/json/movies/3.jpg",
     "rating": 6.3,
     "releaseYear": 2014,
@@ -21,6 +24,7 @@
 },
 {
     "title": "X-Men: Days of Future Past",
+    "location" : "Linz",
     "image": "http://api.androidhive.info/json/movies/4.jpg",
     "rating": 8.4,
     "releaseYear": 2014,
@@ -28,6 +32,7 @@
 },
 {
     "title": "The Machinist",
+    "location" : "Graz",
     "image": "http://api.androidhive.info/json/movies/5.jpg",
     "rating": 7.8,
     "releaseYear": 2004,
@@ -35,6 +40,7 @@
 },
 {
     "title": "The Last Samurai",
+    "location" : "Graz",
     "image": "http://api.androidhive.info/json/movies/6.jpg",
     "rating": 7.7,
     "releaseYear": 2003,
@@ -42,6 +48,7 @@
 },
 {
     "title": "The Amazing Spider-Man 2",
+    "location" : "Vienna",
     "image": "http://api.androidhive.info/json/movies/7.jpg",
     "rating": 7.3,
     "releaseYear": 2014,
@@ -49,6 +56,7 @@
 },
 {
     "title": "Tangled",
+    "location" : "Vienna",
     "image": "http://api.androidhive.info/json/movies/8.jpg",
     "rating": 7.9,
     "releaseYear": 2010,
@@ -56,6 +64,7 @@
 },
 {
     "title": "Rush",
+    "location" : "Vienna",
     "image": "http://api.androidhive.info/json/movies/9.jpg",
     "rating": 8.3,
     "releaseYear": 2013,
@@ -63,6 +72,7 @@
 },
 {
     "title": "Drag Me to Hell",
+    "location" : "Vienna",
     "image": "http://api.androidhive.info/json/movies/10.jpg",
     "rating": 6.7,
     "releaseYear": 2009,
@@ -70,6 +80,7 @@
 },
 {
     "title": "Despicable Me 2",
+    "location" : "Vienna",
     "image": "http://api.androidhive.info/json/movies/11.jpg",
     "rating": 7.6,
     "releaseYear": 2013,
@@ -77,6 +88,7 @@
 },
 {
     "title": "Kill Bill: Vol. 1",
+    "location" : "Vienna",
     "image": "http://api.androidhive.info/json/movies/12.jpg",
     "rating": 8.2,
     "releaseYear": 2003,
@@ -84,6 +96,7 @@
 },
 {
     "title": "A Bug's Life",
+    "location" : "Vienna",
     "image": "http://api.androidhive.info/json/movies/13.jpg",
     "rating": 7.2,
     "releaseYear": 1998,
@@ -91,6 +104,7 @@
 },
 {
     "title": "Life of Brian",
+    "location" : "Vienna",
     "image": "http://api.androidhive.info/json/movies/14.jpg",
     "rating": 8.9,
     "releaseYear": 1972,
@@ -98,6 +112,7 @@
 },
 {
     "title": "How to Train Your Dragon",
+    "location" : "Vienna",
     "image": "http://api.androidhive.info/json/movies/15.jpg",
     "rating": 8.2,
     "releaseYear": 2010,

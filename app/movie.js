@@ -21,6 +21,18 @@ const accessToken = (() => {
   return process.argv[2];
 })();
 
+const firstEntityValue = (entities, entity) => {
+  const val = entities && entities[entity] &&
+    Array.isArray(entities[entity]) &&
+    entities[entity].length > 0 &&
+    entities[entity][0].value
+  ;
+  if (!val) {
+    return null;
+  }
+  return typeof val === 'object' ? val.value : val;
+};
+
 const actions = {
   send(request, response) {
     const {sessionId, context, entities} = request;
@@ -31,10 +43,18 @@ const actions = {
       return resolve();
     });
   },
-  getRandomMovie({context, entities}) {
+  getMovies({context, entities}) {
     return new Promise(function(resolve, reject) {
-      var movie = [Math.floor(Math.random()*movieData.length)];
-      context.movie = movie;
+
+      var location = firstEntityValue(entities, 'location')
+      if (location) {
+        context.playedMovie = movieData[Math.floor(Math.random()*movieData.length)].title;
+        delete context.missingLocation;
+      } else {
+        context.missingLocation = true;
+        delete context.playedMovie;
+      }
+
       return resolve(context);
     });
   }
