@@ -2,6 +2,8 @@
 
 let Wit = null;
 let interactive = null;
+let movieData = require('../data/movies.json');
+
 try {
   // if running from repo
   Wit = require('../').Wit;
@@ -19,21 +21,6 @@ const accessToken = (() => {
   return process.argv[2];
 })();
 
-
-const allJokes = {
-  chuck: [
-    'Chuck Norris counted to infinity - twice.',
-    'Death once had a near-Chuck Norris experience.',
-  ],
-  tech: [
-    'Did you hear about the two antennas that got married? The ceremony was long and boring, but the reception was great!',
-    'Why do geeks mistake Halloween and Christmas? Because Oct 31 === Dec 25.',
-  ],
-  default: [
-    'Why was the Math book sad? Because it had so many problems.',
-  ],
-};
-
 const actions = {
   send(request, response) {
     const {sessionId, context, entities} = request;
@@ -44,6 +31,13 @@ const actions = {
       return resolve();
     });
   },
+  getRandomMovie({context, entities}) {
+    return new Promise(function(resolve, reject) {
+      var movie = [Math.floor(Math.random()*movieData.length)];
+      context.movie = movie;
+      return resolve(context);
+    });
+  }
 };
 
 const client = new Wit({accessToken, actions});
