@@ -48,7 +48,6 @@ const actions = {
     return new Promise(function(resolve, reject) {
 
       var location = firstEntityValue(entities, 'location');
-      console.log(location);
       if (location) {
         var matched = _.filter(movieData, function(movie) {
           return movie.location === location;
@@ -67,6 +66,34 @@ const actions = {
 
       return resolve(context);
     });
+  },
+  getRecommendedMovies({context, entities}) {
+    return new Promise(function(resolve, reject) {
+
+      var location = firstEntityValue(entities, 'location');
+      if (location) {
+
+        var matched = _.filter(movieData, function(movie) {
+          return movie.location === location;
+        });
+
+        matched  = _.sortBy(matched, function(movie){
+          return movie.rating;
+        });
+
+        matched = _.map(matched, function(movie) {
+          return movie.title + ' ' + movie.rating;
+        }).join(',');
+
+        context.playedMovie = matched;
+        delete context.missingLocation;
+      } else {
+        context.missingLocation = true;
+        delete context.playedMovie;
+      }
+      return resolve(context);
+    });
+
   }
 };
 
