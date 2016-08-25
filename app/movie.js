@@ -2,6 +2,7 @@
 
 let Wit = null;
 let interactive = null;
+const _ = require('underscore');
 let movieData = require('../data/movies.json');
 
 try {
@@ -46,9 +47,18 @@ const actions = {
   getMovies({context, entities}) {
     return new Promise(function(resolve, reject) {
 
-      var location = firstEntityValue(entities, 'location')
+      var location = firstEntityValue(entities, 'location');
+      console.log(location);
       if (location) {
-        context.playedMovie = movieData[Math.floor(Math.random()*movieData.length)].title;
+        var matched = _.filter(movieData, function(movie) {
+          return movie.location === location;
+        });
+
+        matched = _.map(matched, function(movie) {
+          return movie.title;
+        }).join(',');
+
+        context.playedMovie = matched;
         delete context.missingLocation;
       } else {
         context.missingLocation = true;
