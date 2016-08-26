@@ -48,6 +48,10 @@ const actions = {
     return new Promise(function(resolve, reject) {
 
       var location = firstEntityValue(entities, 'location');
+
+      console.log(context, entities);
+
+
       if (location) {
         var matched = _.filter(movieData, function(movie) {
           return movie.location === location;
@@ -71,30 +75,69 @@ const actions = {
     return new Promise(function(resolve, reject) {
 
       var location = firstEntityValue(entities, 'location');
-      if (location) {
+      var date = firstEntityValue(entities, 'datetime');
 
-        var matched = _.filter(movieData, function(movie) {
-          return movie.location === location;
-        });
-
-        matched  = _.sortBy(matched, function(movie){
-          return movie.rating;
-        });
-
-        matched = _.map(matched, function(movie) {
-          return movie.title + ' ' + movie.rating;
-        }).join(',');
-
-        context.playedMovie = matched;
+      console.log(context, entities);
+      if(location)
         delete context.missingLocation;
-      } else {
-        context.missingLocation = true;
-        delete context.playedMovie;
+
+      if(date)
+        delete context.missingDate;
+
+      if (location && date) {
+
+        var matched = _.chain(movieData)
+        .filter(function(movie) {
+          return movie.location === location;
+        })
+        .sortBy(function(movie){
+          return movie.rating;
+        })
+        .map(function(movie) {
+          return movie.title + ' ' + movie.rating;
+        })
+        .value()
+        .reverse()
+        .join(',');
+
+        context.recommendedMovie = matched;
       }
+
+      if(!location) {
+        context.missingLocation = true;
+        delete context.recommendedMovie;
+      } else if (!date) {
+        context.missingDate = true;
+        delete context.recommendedMovie;
+      }
+
       return resolve(context);
     });
 
-  }
+  },
+  getReleaseDate({context, entities}) {
+    return new Promise(function(resolve, reject) {
+      var movieName = firstEntityValue(entities, 'search_query');
+
+      console.log(context, entities);
+
+      if(movieName) {
+        var matched = _.chain(movieData)
+        .filter(function(movie) {
+          return movie.name === movieName;
+        })
+
+
+        context.releaseDate = "2010";
+        delete context.missingMovie;
+
+      } else {
+        context.missingMovie=true;
+      }
+      
+      return resolve(context);
+    });
+  },
 };
 
 const client = new Wit({accessToken, actions});
